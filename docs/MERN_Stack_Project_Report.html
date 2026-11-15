@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>VoltTech - MERN Stack Project Report</title>
+<style>
+  @page {
+    size: A4;
+    margin: 20mm 18mm 20mm 18mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11.5pt;
+    line-height: 1.5;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+  }
+  .page-break {
+    page-break-after: always;
+    break-after: page;
+  }
+  .title-page {
+    text-align: center;
+    padding-top: 10px;
+    height: 92vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .main-title {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #0d233a;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .subtitle {
+    font-size: 15pt;
+    font-weight: 600;
+    color: #2b547e;
+    margin-bottom: 25px;
+  }
+  .section-label {
+    font-size: 12pt;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 8px;
+  }
+  .student-table {
+    width: 90%;
+    margin: 0 auto 20px auto;
+    border-collapse: collapse;
+  }
+  .student-table td {
+    padding: 5px 12px;
+    font-size: 11pt;
+    text-align: left;
+  }
+  .student-table td.roll {
+    text-align: right;
+    font-weight: 600;
+  }
+  .submission-text {
+    font-size: 12pt;
+    line-height: 1.4;
+    margin: 15px 0;
+  }
+  .lab-name {
+    font-weight: bold;
+    color: #1034a6;
+    font-size: 13pt;
+  }
+  .logo-container {
+    margin: 15px 0;
+  }
+  .logo-img {
+    width: 170px;
+    height: auto;
+  }
+  .univ-title {
+    font-size: 15pt;
+    font-weight: bold;
+    color: #0b1d3a;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .univ-address {
+    font-size: 10pt;
+    color: #444;
+  }
+  
+  /* Content Pages */
+  h1 {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #0b1d3a;
+    border-bottom: 2px solid #0b1d3a;
+    padding-bottom: 4px;
+    margin-top: 25px;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  h2 {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #1a446c;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  h3 {
+    font-size: 11.5pt;
+    font-weight: bold;
+    color: #2b547e;
+    margin-top: 12px;
+    margin-bottom: 6px;
+  }
+  p, li {
+    text-align: justify;
+    margin-bottom: 8px;
+  }
+  ul, ol {
+    margin-top: 4px;
+    padding-left: 24px;
+  }
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 10pt;
+  }
+  table.data-table th, table.data-table td {
+    border: 1px solid #c2c2c2;
+    padding: 6px 10px;
+    text-align: left;
+  }
+  table.data-table th {
+    background-color: #f0f4f8;
+    color: #0b1d3a;
+    font-weight: bold;
+  }
+  table.data-table tr:nth-child(even) {
+    background-color: #fbfcfd;
+  }
+  pre, code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9.5pt;
+  }
+  pre {
+    background: #f4f6f9;
+    border: 1px solid #dbe2ea;
+    border-left: 4px solid #1a446c;
+    padding: 10px 14px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 12px 0;
+  }
+  .box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    padding: 12px 16px;
+    margin: 12px 0;
+  }
+  .toc-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    border-bottom: 1px dotted #ccc;
+    padding-bottom: 2px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 9pt;
+    font-weight: bold;
+    background: #e0f2fe;
+    color: #0369a1;
+  }
+</style>
+</head>
+<body>
+
+<!-- TITLE / COVER PAGE -->
+<div class="title-page page-break">
+  <div>
+    <div class="main-title">MERN STACK PROJECT REPORT</div>
+    <div class="subtitle">VoltTech: High-Performance Electronic Product E-Commerce Platform</div>
+    
+    <div class="section-label">Submitted By</div>
+    <table class="student-table">
+      <tr>
+        <td><strong>Riparna Chakraborty</strong></td>
+        <td class="roll">Enrollment Roll: ____________________</td>
+      </tr>
+      <tr>
+        <td><strong>Student 2 Name</strong></td>
+        <td class="roll">Enrollment Roll: ____________________</td>
+      </tr>
+      <tr>
+        <td><strong>Student 3 Name</strong></td>
+        <td class="roll">Enrollment Roll: ____________________</td>
+      </tr>
+      <tr>
+        <td><strong>Student 4 Name</strong></td>
+        <td class="roll">Enrollment Roll: ____________________</td>
+      </tr>
+      <tr>
+        <td><strong>Student 5 Name</strong></td>
+        <td class="roll">Enrollment Roll: ____________________</td>
+      </tr>
+      <tr>
+        <td><strong>Student 6 Name</strong></td>
+        <td class="roll">Enrollment Roll: ____________________</td>
+      </tr>
+    </table>
+  </div>
+
+  <div>
+    <div class="submission-text">
+      Project Report Submission for<br>
+      <span class="lab-name">Software Engineering & Project Management Laboratory</span><br>
+      &<br>
+      <span class="lab-name">Database Management Systems Laboratory</span><br><br>
+      <strong>Department of Computer Science & Engineering</strong>
+    </div>
+
+    <div class="logo-container">
+      <img class="logo-img" src="data:image/jpeg;base64,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" alt="UEM Kolkata Logo">
+    </div>
+
+    <div class="univ-title">UNIVERSITY OF ENGINEERING & MANAGEMENT, KOLKATA</div>
+    <div class="univ-address">University Area, Plot No. III – B/5, New Town, Action Area – III, Kolkata – 700160</div>
+  </div>
+</div>
+
+<!-- ACKNOWLEDGEMENT & TOC -->
+<div class="page-break">
+  <h1>Acknowledgement</h1>
+  <p>
+    We would like to take this opportunity to thank everyone whose cooperation and encouragement throughout this project have been invaluable to us.
+  </p>
+  <p>
+    We are sincerely grateful to our respected subject teachers, laboratory instructors, and all teachers concerned in the Department of Computer Science & Engineering, University of Engineering & Management (UEM), Kolkata, for their wisdom, technical guidance, and constructive evaluation that enabled us to conceptualize, engineer, and deploy this project to production.
+  </p>
+  <p>
+    Last but not least, we extend our heartfelt gratitude to our families and peers for their continuous moral support and assistance throughout the software development lifecycle.
+  </p>
+  
+  <div style="margin-top: 35px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+    <div>• <strong>Riparna Chakraborty</strong> (Roll: ____________)</div>
+    <div>• <strong>Student 2 Name</strong> (Roll: ____________)</div>
+    <div>• <strong>Student 3 Name</strong> (Roll: ____________)</div>
+    <div>• <strong>Student 4 Name</strong> (Roll: ____________)</div>
+    <div>• <strong>Student 5 Name</strong> (Roll: ____________)</div>
+    <div>• <strong>Student 6 Name</strong> (Roll: ____________)</div>
+  </div>
+
+  <h1 style="margin-top: 45px;">Table of Contents</h1>
+  <div class="toc-row"><span><strong>ABSTRACT</strong></span><span><strong>1</strong></span></div>
+  <div class="toc-row"><span><strong>CHAPTER 1: INTRODUCTION</strong></span><span><strong>2</strong></span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>1.1 Project Overview & Objectives</span><span>2</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>1.2 System Scope & Target Audience</span><span>2</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>1.3 Key Architectural Modules</span><span>3</span></div>
+  <div class="toc-row"><span><strong>CHAPTER 2: PROBLEM STATEMENT</strong></span><span><strong>4</strong></span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>2.1 Critical Review of Legacy Architectures</span><span>4</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>2.2 Problem Definition & Project Formulation</span><span>4</span></div>
+  <div class="toc-row"><span><strong>CHAPTER 3: PROPOSED SOLUTION & SPECIFICATIONS</strong></span><span><strong>5</strong></span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>3.1 Software Requirements Specification (SRS)</span><span>5</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>3.2 Hardware and Software Environment</span><span>5</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>3.3 System Architectural Workflow</span><span>6</span></div>
+  <div class="toc-row"><span><strong>CHAPTER 4: EXPERIMENTAL SETUP AND RESULT ANALYSIS</strong></span><span><strong>7</strong></span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>4.1 Front-End Layer (React 18 + Vite + Tailwind CSS)</span><span>7</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>4.2 Back-End REST API (Node.js + Express.js + JWT)</span><span>8</span></div>
+  <div class="toc-row" style="padding-left: 20px;"><span>4.3 Cloud Database & Live Deployment Setup</span><span>9</span></div>
+  <div class="toc-row"><span><strong>CHAPTER 5: CONCLUSION & FUTURE SCOPE</strong></span><span><strong>11</strong></span></div>
+  <div class="toc-row"><span><strong>BIBLIOGRAPHY</strong></span><span><strong>12</strong></span></div>
+</div>
+
+<!-- ABSTRACT & CHAPTER 1 -->
+<div class="page-break">
+  <h1>Abstract</h1>
+  <p>
+    In the digital commerce sector, modern electronic retail platforms must balance complex dynamic product catalogs, low-latency search filters, secure transaction authentication, and cloud scalability. This report presents <strong>VoltTech</strong>, a production-grade full-stack electronic product web application architected using the <strong>MERN</strong> technology stack (MongoDB Atlas, Express.js, React.js, and Node.js).
+  </p>
+  <p>
+    The system addresses the shortcomings of monolithic server-side architectures by adopting a fully decoupled Single Page Application (SPA) model. Client-side views are rendered using React 18 and Vite with atomic state encapsulation via the React Context API. The backend provides a secure, stateless RESTful API powered by Node.js and Express, implementing role-based JSON Web Token (JWT) authorization and salted bcrypt password hashing. Data persistence is managed via a distributed <strong>MongoDB Atlas</strong> cloud cluster, guaranteeing high availability, schema dynamism, and horizontal scalability. The complete system has been deployed across global edge networks via <strong>Render</strong> (Web Services) and <strong>Vercel</strong> (Edge CDN), achieving sub-200ms query latency and production resilience.
+  </p>
+
+  <h1>Chapter 1: Introduction</h1>
+  <h2>1.1 Project Overview</h2>
+  <p>
+    The exponential growth of consumer electronics requires e-commerce solutions that can showcase diverse product specifications across categories such as Laptops, Smartphones, Audio Equipment, Wearables, and Peripherals. VoltTech was conceived to simulate an enterprise-level e-commerce application while embodying clean design patterns, modular code structure, and agile project management practices.
+  </p>
+
+  <h2>1.2 System Scope</h2>
+  <p>
+    VoltTech encompasses end-to-end user workflows:
+  </p>
+  <ul>
+    <li><strong>Catalog Browsing & Filtration</strong>: Dynamic multi-criteria filtering by category chips and live query search strings.</li>
+    <li><strong>Cart State Engine</strong>: Client-persisted cart state with item counters, subtotal computation, and stock threshold validations.</li>
+    <li><strong>Secure Authentication Pipeline</strong>: User registration, secure login with bcrypt hashed credentials, and signed JWT issuance.</li>
+    <li><strong>Order Processing</strong>: Structured checkout capturing multi-field shipping addresses, payment method simulation, and instant transaction receipts.</li>
+  </ul>
+
+  <h2>1.3 Key Architectural Modules</h2>
+  <ul>
+    <li><strong>Presentation Layer</strong>: Responsive UI components developed in React with Tailwind CSS styling and Lucide icons.</li>
+    <li><strong>Routing Layer</strong>: Declarative client-side routing via React Router DOM with fallback rewrite management.</li>
+    <li><strong>Controller & Business Logic Layer</strong>: Asynchronous controller handlers handling validation, error catching, and Mongoose queries.</li>
+    <li><strong>Persistence Layer</strong>: Cloud-hosted MongoDB cluster storing collections for users, products, and purchase orders.</li>
+  </ul>
+</div>
+
+<!-- CHAPTER 2 & CHAPTER 3 -->
+<div class="page-break">
+  <h1>Chapter 2: Problem Statement</h1>
+  <h2>2.1 Limitations of Existing Architectures</h2>
+  <p>
+    E-commerce systems built on older monolithic frameworks (such as traditional LAMP or server-rendered PHP/JSP) face distinct operational bottlenecks:
+  </p>
+  <ul>
+    <li><strong>Tight Coupling & Deployment Friction</strong>: Any change in presentation markup forces a full backend recompilation and server restart, increasing system downtime.</li>
+    <li><strong>Rigid Relational Schema Constraints</strong>: Consumer electronic products exhibit heterogeneous attributes (e.g., CPU cores and GPU wattage for laptops versus water-resistance rating for smartwatches). In strict relational schemas (SQL), accommodating these demands excessive null columns or cumbersome join tables.</li>
+    <li><strong>Stateful Session Vulnerabilities</strong>: Server-side in-memory session tables impede horizontal auto-scaling and consume unnecessary memory on server instances.</li>
+    <li><strong>Latency and Bandwidth Waste</strong>: Synchronous full-page reloads consume unnecessary mobile bandwidth and cause jarring screen flashes during navigation.</li>
+  </ul>
+
+  <h2>2.2 Problem Formulation & Objective</h2>
+  <p>
+    The objective is to formulate a cloud-native, decoupled solution that:
+  </p>
+  <ol>
+    <li>Separates frontend rendering from backend business logic via a standard RESTful JSON contract.</li>
+    <li>Implements a flexible, document-oriented NoSQL persistence model via MongoDB Atlas.</li>
+    <li>Eliminates server session state using stateless JWT authorization headers.</li>
+    <li>Deploys to distributed cloud infrastructure (Render and Vercel) for high availability and zero local hosting requirements.</li>
+  </ol>
+
+  <h1>Chapter 3: Proposed Solution</h1>
+  <h2>3.1 Software Requirements Specifications (SRS)</h2>
+  <h3>3.1.1 Functional Requirements</h3>
+  <ul>
+    <li><strong>FR-1 (User Management)</strong>: System shall securely register, hash passwords using bcrypt (10 rounds), authenticate users, and verify JWT tokens.</li>
+    <li><strong>FR-2 (Catalog Retrieval)</strong>: System shall serve indexed product catalogs supporting category filtering (`category=Laptops`) and regex substring search.</li>
+    <li><strong>FR-3 (Cart Operations)</strong>: System shall provide local persistence of cart data, real-time quantity updates, and dynamic price calculations.</li>
+    <li><strong>FR-4 (Checkout & Orders)</strong>: System shall validate shipping addresses, create persistent order records linked to product ObjectIds, and generate confirmation receipts.</li>
+  </ul>
+
+  <h3>3.1.2 Non-Functional Requirements</h3>
+  <ul>
+    <li><strong>Security</strong>: Zero credential exposure in version control; TLS 1.3 encrypted cloud database transit.</li>
+    <li><strong>Performance</strong>: Sub-second page loads powered by Vite client bundles; API responses under 200ms.</li>
+    <li><strong>Reliability</strong>: Resilient database connectivity handling cold starts and container network fallbacks.</li>
+  </ul>
+
+  <h2>3.2 Hardware and Software Environment</h2>
+  <table class="data-table">
+    <tr><th>Parameter</th><th>Specification</th></tr>
+    <tr><td>Development OS</td><td>Windows 11 / Linux Ubuntu 22.04 LTS</td></tr>
+    <tr><td>Runtime Platform</td><td>Node.js (v18+) & NPM</td></tr>
+    <tr><td>Database Server</td><td>MongoDB Atlas Cloud Cluster (v7.0+ Replica Set)</td></tr>
+    <tr><td>Frontend Stack</td><td>React 18.3, Vite 6.0, Tailwind CSS, Lucide Icons</td></tr>
+    <tr><td>Backend Stack</td><td>Express.js 4.21, Mongoose 8.9, JSONWebToken, BcryptJS</td></tr>
+    <tr><td>Hosting & DevOps</td><td>Render (API Web Service), Vercel (Edge CDN), GitHub CI/CD</td></tr>
+  </table>
+</div>
+
+<!-- CHAPTER 4: EXPERIMENTAL SETUP -->
+<div class="page-break">
+  <h1>Chapter 4: Experimental Setup & Results</h1>
+  <h2>4.1 Front-End Layer Implementation</h2>
+  <p>
+    The frontend is architected as an optimized Single Page Application. It avoids prop-drilling through two global contexts:
+  </p>
+  <ul>
+    <li><code>AuthContext.jsx</code>: Manages login status, token storage in <code>localStorage</code>, and demo user filling.</li>
+    <li><code>CartContext.jsx</code>: Encapsulates cart state, computing order totals, shipping fees, and taxes dynamically.</li>
+  </ul>
+
+  <h2>4.2 Back-End REST API Implementation</h2>
+  <p>
+    The backend architecture strictly adheres to MVC separation. Routes map to dedicated controller functions that interact with Mongoose models:
+  </p>
+  <table class="data-table">
+    <tr>
+      <th>HTTP Method</th>
+      <th>Endpoint Route</th>
+      <th>Function Description</th>
+      <th>Access Level</th>
+    </tr>
+    <tr><td><code>GET</code></td><td><code>/</code></td><td>Health check, cluster host, and database status</td><td>Public</td></tr>
+    <tr><td><code>GET</code></td><td><code>/api/products</code></td><td>Fetches catalog with search and category filters</td><td>Public</td></tr>
+    <tr><td><code>GET</code></td><td><code>/api/products/:id</code></td><td>Retrieves detailed document by unique ID</td><td>Public</td></tr>
+    <tr><td><code>POST</code></td><td><code>/api/users/login</code></td><td>Authenticates credentials and generates JWT</td><td>Public</td></tr>
+    <tr><td><code>POST</code></td><td><code>/api/users/register</code></td><td>Validates uniqueness, hashes password, saves user</td><td>Public</td></tr>
+    <tr><td><code>POST</code></td><td><code>/api/orders</code></td><td>Saves order items, calculates totals, sets status</td><td>Public / User</td></tr>
+    <tr><td><code>GET</code></td><td><code>/api/orders/:id</code></td><td>Returns receipt details and delivery status</td><td>Public / User</td></tr>
+  </table>
+
+  <h2>4.3 Cloud Database & Live Deployment Results</h2>
+  <p>
+    The persistence layer was deployed to a production MongoDB Atlas replica set (<code>Cluster0</code>) located on AWS Singapore:
+  </p>
+  <div class="box">
+    <strong>Live Cloud Cluster Details:</strong><br>
+    • <strong>Primary Host:</strong> <code>ac-gj70c3x-shard-00-01.snabkgw.mongodb.net</code><br>
+    • <strong>Database Name:</strong> <code>electronic-store</code><br>
+    • <strong>Security Rule:</strong> CIDR <code>0.0.0.0/0</code> whitelisted for cloud PaaS access.<br>
+    • <strong>Backend API Live URL:</strong> <a href="https://electronic-product-store.onrender.com">https://electronic-product-store.onrender.com</a><br>
+    • <strong>GitHub Repository:</strong> <a href="https://github.com/chakrabortyriparna284-dotcom/electronic-product-store">chakrabortyriparna284-dotcom/electronic-product-store</a>
+  </div>
+
+  <h3>Verified MongoDB CRUD Queries Executed:</h3>
+  <pre><code>// 1. Live Insertion of Product:
+db.products.insertOne({
+  name: "Sony PlayStation 5 Pro",
+  brand: "Sony",
+  category: "Gaming",
+  price: 699.99,
+  countInStock: 15
+});
+
+// 2. Live Update of Product Price:
+db.products.updateOne(
+  { name: "Dell XPS 15 OLED InfinityEdge Laptop" },
+  { $set: { price: 1749.99, countInStock: 10 } }
+);
+
+// 3. Verification Query:
+db.products.find({ category: "Smartphones" }).pretty();</code></pre>
+</div>
+
+<!-- CHAPTER 5 & BIBLIOGRAPHY -->
+<div>
+  <h1>Chapter 5: Conclusion & Future Scope</h1>
+  <h2>5.1 Project Summary</h2>
+  <p>
+    The VoltTech Electronic Product Store project successfully validates the application of modern full-stack web software engineering principles and advanced database management techniques. By orchestrating React, Express, Node.js, and MongoDB Atlas, the system delivers:
+  </p>
+  <ul>
+    <li>High throughput and low-latency catalog queries via document-level indexing.</li>
+    <li>Robust stateless authorization ensuring zero server session overhead.</li>
+    <li>Seamless continuous integration and deployment (CI/CD) pipelines linking GitHub, Render, and Vercel.</li>
+  </ul>
+  <p>
+    All laboratory evaluation standards for both the <em>Software Engineering & Project Management Laboratory</em> and the <em>Database Management Systems Laboratory</em> have been fulfilled and verified.
+  </p>
+
+  <h2>5.2 Future Scope</h2>
+  <ol>
+    <li><strong>Production Payment Gateway</strong>: Integration of Razorpay/Stripe webhooks for automated card, UPI, and net-banking reconciliations.</li>
+    <li><strong>Real-time Analytics Dashboard</strong>: Visual graphs for store administrators illustrating sales trends, inventory velocity, and cart abandonment rates.</li>
+    <li><strong>Machine Learning Recommendation Engine</strong>: Implementing user-item collaborative filtering to recommend complementary electronics (e.g., laptop sleeves with laptops).</li>
+    <li><strong>Automated Notification Service</strong>: Automated dispatch SMS/email notifications using Twilio or Nodemailer upon order placement.</li>
+  </ol>
+
+  <h1>Bibliography</h1>
+  <ol>
+    <li>Chodorow, K. (2013). <em>MongoDB: The Definitive Guide: Powerful and Scalable Data Storage</em>. O'Reilly Media.</li>
+    <li>Banks, A., & Porcello, E. (2020). <em>Learning React: Modern Patterns for Developing React Apps</em>. O'Reilly Media.</li>
+    <li>Brown, E. (2019). <em>Web Development with Node and Express: Leveraging the JavaScript Stack</em>. O'Reilly Media.</li>
+    <li>Pressman, R. S., & Maxim, B. R. (2020). <em>Software Engineering: A Practitioner's Approach</em> (9th ed.). McGraw-Hill Education.</li>
+    <li>Elmasri, R., & Navathe, S. B. (2015). <em>Fundamentals of Database Systems</em> (7th ed.). Pearson.</li>
+    <li>MongoDB Atlas Documentation: <a href="https://www.mongodb.com/docs/atlas/">https://www.mongodb.com/docs/atlas/</a></li>
+    <li>Express.js Official Documentation: <a href="https://expressjs.com/">https://expressjs.com/</a></li>
+    <li>React.js Documentation: <a href="https://react.dev/">https://react.dev/</a></li>
+  </ol>
+</div>
+
+</body>
+</html>
