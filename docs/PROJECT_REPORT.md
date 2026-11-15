@@ -6,12 +6,10 @@
 ### Submitted By
 | Student Name | University Enrollment Roll |
 | :--- | :--- |
+| **Arghadip Gayen** | *(Insert Enrollment Roll No.)* |
 | **Riparna Chakraborty** | *(Insert Enrollment Roll No.)* |
-| *(Student 2 Name)* | *(Insert Enrollment Roll No.)* |
-| *(Student 3 Name)* | *(Insert Enrollment Roll No.)* |
-| *(Student 4 Name)* | *(Insert Enrollment Roll No.)* |
-| *(Student 5 Name)* | *(Insert Enrollment Roll No.)* |
-| *(Student 6 Name)* | *(Insert Enrollment Roll No.)* |
+| **Anita Pal** | *(Insert Enrollment Roll No.)* |
+| **Anirban Bera** | *(Insert Enrollment Roll No.)* |
 
 **Project Report Submission for:**  
 *Software Engineering & Project Management Laboratory*  
@@ -32,12 +30,10 @@ We are sincerely grateful to our subject teachers and all other teachers concern
 
 Last but not least, we extend our warm regards to our families and peers, who have supported us and always had faith in our work.
 
+- Arghadip Gayen – *(Enrollment No.)*
 - Riparna Chakraborty – *(Enrollment No.)*
-- *(Student Name 2)* – *(Enrollment No.)*
-- *(Student Name 3)* – *(Enrollment No.)*
-- *(Student Name 4)* – *(Enrollment No.)*
-- *(Student Name 5)* – *(Enrollment No.)*
-- *(Student Name 6)* – *(Enrollment No.)*
+- Anita Pal – *(Enrollment No.)*
+- Anirban Bera – *(Enrollment No.)*
 
 ---
 
