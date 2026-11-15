@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import connectDB from '../config/db.js';
 import Product from '../models/Product.js';
 import fallbackProducts from '../data/products.js';
 
@@ -15,7 +16,12 @@ export const getProducts = async (req, res) => {
   try {
     const { category, search } = req.query;
 
-    // Graceful fallback if MongoDB is not currently running
+    // If disconnected, attempt connection now
+    if (mongoose.connection.readyState !== 1) {
+      await connectDB();
+    }
+
+    // Fallback if still not connected
     if (mongoose.connection.readyState !== 1) {
       let filtered = [...mockProductsWithIds];
       if (category && category !== 'All') {

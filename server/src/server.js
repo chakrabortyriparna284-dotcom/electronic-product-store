@@ -25,7 +25,10 @@ app.use(cors());
 app.use(express.json());
 
 // Base Health Check Route
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+  if (mongoose.connection.readyState !== 1) {
+    await connectDB();
+  }
   const isConnected = mongoose.connection.readyState === 1;
   res.status(200).json({
     status: 'online',
