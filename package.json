@@ -1,0 +1,19 @@
+{
+  "name": "electronic-product-store",
+  "version": "1.0.0",
+  "description": "Electronic Product Store - MERN Stack College Project",
+  "main": "server/src/server.js",
+  "scripts": {
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "seed": "npm --prefix server run seed"
+  },
+  "keywords": ["mern", "react", "express", "mongodb", "node", "ecommerce"],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
