@@ -1,51 +1,43 @@
 import React from 'react';
-import { Zap, ShieldCheck, Truck, RefreshCw } from 'lucide-react';
+import { ShieldCheck, Truck, RefreshCw } from 'lucide-react';
+import { formatINR } from '../utils/currency';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container">
+    <footer className="brand-footer">
+      <div className="footer-inner">
         {/* Value Props */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '24px',
-            paddingBottom: '32px',
-            marginBottom: '24px',
-            borderBottom: '1px solid #1e293b',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Truck color="#3b82f6" size={28} />
+        <div className="footer-props-grid">
+          <div className="footer-prop-item">
+            <Truck color="#6857F7" size={26} />
             <div>
-              <h4 style={{ color: '#fff', fontSize: '0.95rem' }}>Free Express Delivery</h4>
-              <p style={{ fontSize: '0.8rem' }}>On all orders above $100</p>
+              <h4 style={{ color: '#111827', fontSize: '0.95rem', fontWeight: 700 }}>Free Express Delivery</h4>
+              <p style={{ fontSize: '0.8rem', color: '#64748B' }}>On all orders above {formatINR(999, true)}</p>
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <ShieldCheck color="#3b82f6" size={28} />
+          <div className="footer-prop-item">
+            <ShieldCheck color="#6857F7" size={26} />
             <div>
-              <h4 style={{ color: '#fff', fontSize: '0.95rem' }}>2-Year Warranty</h4>
-              <p style={{ fontSize: '0.8rem' }}>100% Genuine electronics</p>
+              <h4 style={{ color: '#111827', fontSize: '0.95rem', fontWeight: 700 }}>2-Year Warranty</h4>
+              <p style={{ fontSize: '0.8rem', color: '#64748B' }}>100% Genuine brand products</p>
             </div>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <RefreshCw color="#3b82f6" size={28} />
+          <div className="footer-prop-item">
+            <RefreshCw color="#6857F7" size={26} />
             <div>
-              <h4 style={{ color: '#fff', fontSize: '0.95rem' }}>30 Days Easy Return</h4>
-              <p style={{ fontSize: '0.8rem' }}>No questions asked refund</p>
+              <h4 style={{ color: '#111827', fontSize: '0.95rem', fontWeight: 700 }}>30 Days Easy Return</h4>
+              <p style={{ fontSize: '0.8rem', color: '#64748B' }}>Hassle-free direct refund</p>
             </div>
           </div>
         </div>
 
-        <div className="footer-content">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fff', fontWeight: 700 }}>
-            <Zap size={18} color="#3b82f6" />
-            <span>VoltTech Electronics Store</span>
+        <div className="footer-bottom-row">
+          <div className="footer-brand-title">
+            <span className="brand-text">MLC</span>
+            <span style={{ fontSize: '0.9rem', color: '#64748B', fontWeight: 500 }}>Official Online Store</span>
           </div>
-          <p style={{ fontSize: '0.85rem' }}>
-            © {new Date().getFullYear()} VoltTech Inc. Built for MERN Stack College Capstone Project.
+          <p style={{ fontSize: '0.85rem', color: '#8E95A5' }}>
+            © {new Date().getFullYear()} MLC Inc. All prices in Indian Rupees (₹ INR).
           </p>
         </div>
       </div>

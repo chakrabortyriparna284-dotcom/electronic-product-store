@@ -61,7 +61,7 @@ export const CartProvider = ({ children }) => {
 
   const itemsCount = cartItems.reduce((acc, item) => acc + item.qty, 0);
   const subtotal = cartItems.reduce((acc, item) => acc + item.qty * item.price, 0);
-  const taxPrice = Number((subtotal * 0.08).toFixed(2));
+  const taxPrice = Number((subtotal * 0.18).toFixed(2));
   const totalPrice = Number((subtotal + taxPrice).toFixed(2));
 
   return (

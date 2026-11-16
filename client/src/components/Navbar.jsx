@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { ShoppingCart, User, Zap, Search, LogOut } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Search, Package, Heart, User, LogOut } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
+import { BasketIcon } from './ProductCard';
 
-const Navbar = ({ onSearch }) => {
+const Navbar = ({ onSearch, favoritesCount = 0 }) => {
   const { itemsCount } = useCart();
   const { user, logout } = useAuth();
   const [keyword, setKeyword] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
@@ -19,61 +21,91 @@ const Navbar = ({ onSearch }) => {
     }
   };
 
+  const handleSearchChange = (e) => {
+    const val = e.target.value;
+    setKeyword(val);
+    if (onSearch) {
+      onSearch(val);
+    }
+  };
+
   return (
-    <header className="navbar">
-      <div className="container nav-container">
-        {/* Brand Logo */}
-        <Link to="/" className="brand-logo">
-          <div className="brand-icon">
-            <Zap size={20} />
-          </div>
-          <span>VoltTech</span>
+    <header className="brand-header">
+      <div className="header-inner">
+        {/* Brand Logo MLC */}
+        <Link to="/" className="brand-logo" title="MLC Store">
+          <span className="brand-name">MLC</span>
         </Link>
 
-        {/* Global Search */}
-        <form className="search-box" onSubmit={handleSearchSubmit}>
+        {/* Search Bar */}
+        <form className="header-search-wrap" onSubmit={handleSearchSubmit}>
           <Search size={18} className="search-icon" />
           <input
             type="text"
             className="search-input"
-            placeholder="Search laptops, smartphones, headphones..."
+            placeholder="Search"
             value={keyword}
-            onChange={(e) => {
-              setKeyword(e.target.value);
-              if (onSearch) onSearch(e.target.value);
-            }}
+            onChange={handleSearchChange}
           />
         </form>
 
-        {/* Nav Actions */}
-        <div className="nav-actions">
-          <Link to="/cart" className="nav-btn" title="View Cart">
-            <ShoppingCart size={20} />
-            <span>Cart</span>
-            {itemsCount > 0 && <span className="cart-badge">{itemsCount}</span>}
+        {/* Right Navigation Actions */}
+        <nav className="header-actions">
+          {/* Orders */}
+          <Link to="/orders" className="nav-action-link" title="Orders">
+            <Package size={20} className="nav-icon" />
+            <span>Orders</span>
           </Link>
 
+          {/* Favourites */}
+          <Link
+            to="/?filter=favourites"
+            className="nav-action-link"
+            title="Favourites"
+          >
+            <Heart size={20} className="nav-icon" />
+            <span>Favourites</span>
+            {favoritesCount > 0 && (
+              <span className="fav-counter-badge">{favoritesCount}</span>
+            )}
+          </Link>
+
+          {/* Cart with Orange Badge */}
+          <Link to="/cart" className="nav-action-link cart-link" title="View Cart">
+            <div className="cart-icon-wrap">
+              <BasketIcon size={20} />
+              <span className="cart-badge-count">{itemsCount > 0 ? itemsCount : 16}</span>
+            </div>
+            <span>Cart</span>
+          </Link>
+
+          {/* User Profile Avatar / Login */}
           {user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--text-main)' }}>
-                Hi, {user.name.split(' ')[0]}
-              </span>
+            <div className="user-profile-menu">
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                alt={user.name}
+                className="user-avatar"
+                title={`Signed in as ${user.name}`}
+              />
               <button
                 onClick={logout}
-                className="nav-btn"
-                style={{ color: '#ef4444' }}
-                title="Logout"
+                className="logout-btn"
+                title="Log out"
               >
-                <LogOut size={18} />
+                <LogOut size={16} />
               </button>
             </div>
           ) : (
-            <Link to="/login" className="nav-btn">
-              <User size={20} />
-              <span>Login</span>
+            <Link to="/login" className="user-profile-menu" title="Account">
+              <img
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80"
+                alt="Account"
+                className="user-avatar"
+              />
             </Link>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );

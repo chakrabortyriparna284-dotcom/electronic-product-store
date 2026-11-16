@@ -14,7 +14,18 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ['Laptops', 'Smartphones', 'Audio', 'Wearables', 'Accessories'],
+    },
+    originalPrice: {
+      type: Number,
+      default: null,
+    },
+    isTopItem: {
+      type: Boolean,
+      default: false,
+    },
+    isHeroCard: {
+      type: Boolean,
+      default: false,
     },
     image: {
       type: String,

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Lock, Mail, Zap } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
@@ -31,37 +31,41 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container">
-      <div className="auth-wrap">
+    <div className="showcase-outer-canvas">
+      <div className="showcase-card-container" style={{ maxWidth: '480px', padding: '40px 32px' }}>
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-          <h1 style={{ fontSize: '1.6rem', fontWeight: 800 }}>Welcome Back</h1>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-            Log in to manage your electronic product orders.
+          <div style={{ fontSize: '1.8rem', fontWeight: 900, color: 'var(--brand-primary)', marginBottom: '4px' }}>
+            MLC
+          </div>
+          <h1 style={{ fontSize: '1.5rem', fontWeight: 800 }}>Welcome Back</h1>
+          <p style={{ color: '#64748B', fontSize: '0.9rem', marginTop: '4px' }}>
+            Sign in to track orders, saved favorites, and fast checkout.
           </p>
         </div>
 
-        {/* 1-Click Demo Fill for College Evaluation */}
+        {/* 1-Click Demo Fill */}
         <button
           type="button"
           onClick={handleQuickDemoFill}
           style={{
             width: '100%',
-            padding: '10px',
+            padding: '10px 14px',
             marginBottom: '20px',
-            background: '#eff6ff',
-            border: '1px dashed #3b82f6',
-            borderRadius: '8px',
-            color: '#1d4ed8',
+            background: 'var(--brand-primary-light)',
+            border: '1.5px dashed var(--brand-primary)',
+            borderRadius: '12px',
+            color: 'var(--brand-primary)',
             fontWeight: 700,
-            fontSize: '0.875rem',
+            fontSize: '0.85rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '8px',
+            cursor: 'pointer',
           }}
         >
-          <Zap size={16} />
-          <span>⚡ 1-Click Fill Demo Account (demo@example.com)</span>
+          <Sparkles size={16} />
+          <span>1-Click Auto Fill Demo Account</span>
         </button>
 
         {localError && <div className="alert-box alert-danger">{localError}</div>}
@@ -95,15 +99,15 @@ const LoginPage = () => {
             type="submit"
             disabled={loading}
             className="btn-primary"
-            style={{ width: '100%', padding: '12px', marginTop: '8px' }}
+            style={{ width: '100%', padding: '12px', marginTop: '10px', justifyContent: 'center' }}
           >
-            {loading ? 'Authenticating...' : 'Sign In'}
+            {loading ? 'Authenticating...' : 'Sign In to MLC'}
           </button>
         </form>
 
-        <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+        <p style={{ textAlign: 'center', marginTop: '20px', fontSize: '0.875rem', color: '#64748B' }}>
           Don't have an account?{' '}
-          <Link to="/register" style={{ color: 'var(--primary)', fontWeight: 700 }}>
+          <Link to="/register" style={{ color: 'var(--brand-primary)', fontWeight: 700 }}>
             Create Account
           </Link>
         </p>
