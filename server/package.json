@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
+    "test:e2e": "node test-e2e.js",
     "seed": "node src/seeder.js",
     "seed:destroy": "node src/seeder.js -d"
   },

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Star, ChevronDown, RotateCcw } from 'lucide-react';
+import { Star, ChevronDown, RotateCcw, SlidersHorizontal, ArrowUpDown } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import { BrandIcon } from '../components/BrandLogos';
 import { MOCK_PRODUCTS } from '../data/mockProducts';
@@ -40,6 +40,7 @@ const HomePage = () => {
   // Active Category (default 'Sport' to match the design screenshot!)
   const activeCategory = searchParams.get('category') || 'Sport';
   const searchQuery = searchParams.get('search') || '';
+  const filterParam = searchParams.get('filter') || '';
 
   // Filter States
   const [minPrice, setMinPrice] = useState(20);
@@ -55,7 +56,8 @@ const HomePage = () => {
   ]); // Asics unchecked by default as in screenshot
   const [deliveryOption, setDeliveryOption] = useState('Standard');
   const [showMoreBrands, setShowMoreBrands] = useState(false);
-  const [favorites, setFavorites] = useState(['prod-003', 'prod-005']); // Boxing gloves and Hoodie favorited in screenshot
+  const [sortBy, setSortBy] = useState('featured');
+  const [favorites, setFavorites] = useState(['prod-003', 'prod-005']);
 
   // Products from backend or fallback to rich mock data
   const [backendProducts, setBackendProducts] = useState(null);
@@ -91,9 +93,23 @@ const HomePage = () => {
     return MOCK_PRODUCTS;
   }, [backendProducts]);
 
-  // Filtered products calculation
+  // Brand item counts
+  const brandCounts = useMemo(() => {
+    const counts = {};
+    catalog.forEach((p) => {
+      counts[p.brand] = (counts[p.brand] || 0) + 1;
+    });
+    return counts;
+  }, [catalog]);
+
+  // Filtered & Sorted products calculation
   const filteredProducts = useMemo(() => {
-    return catalog.filter((product) => {
+    let list = catalog.filter((product) => {
+      // Favourites filter
+      if (filterParam === 'favourites') {
+        if (!favorites.includes(product._id)) return false;
+      }
+
       // Category filter
       if (activeCategory !== 'All Categories') {
         const matchesCat =
@@ -131,7 +147,25 @@ const HomePage = () => {
 
       return true;
     });
-  }, [catalog, activeCategory, searchQuery, minPrice, maxPrice, ratingFilter, selectedBrands]);
+
+    // Sorting
+    if (sortBy === 'price-asc') {
+      list.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price-desc') {
+      list.sort((a, b) => b.price - a.price);
+    } else if (sortBy === 'rating') {
+      list.sort((a, b) => b.rating - a.rating);
+    }
+
+    return list;
+  }, [catalog, activeCategory, searchQuery, filterParam, favorites, minPrice, maxPrice, ratingFilter, selectedBrands, sortBy]);
+
+  // Dynamic average price
+  const averagePrice = useMemo(() => {
+    if (filteredProducts.length === 0) return 300;
+    const sum = filteredProducts.reduce((acc, p) => acc + p.price, 0);
+    return Math.round(sum / filteredProducts.length);
+  }, [filteredProducts]);
 
   // Handlers
   const handleCategorySelect = (cat) => {
@@ -141,6 +175,7 @@ const HomePage = () => {
     } else {
       nextParams.set('category', cat);
     }
+    nextParams.delete('filter');
     setSearchParams(nextParams);
   };
 
@@ -184,8 +219,8 @@ const HomePage = () => {
           <div className="categories-pill-scroll">
             {CATEGORIES.map((cat) => {
               const isActive =
-                activeCategory === cat ||
-                (cat === 'All Categories' && !searchParams.get('category'));
+                (activeCategory === cat && !filterParam) ||
+                (cat === 'All Categories' && !searchParams.get('category') && !filterParam);
               return (
                 <button
                   key={cat}
@@ -213,7 +248,7 @@ const HomePage = () => {
               </div>
 
               <div className="filter-subtitle">
-                The average price is {formatINR(300, true)}
+                The average price is {formatINR(averagePrice, true)}
               </div>
 
               {/* Decorative Price Distribution Wave Histogram */}
@@ -289,7 +324,7 @@ const HomePage = () => {
                     {formatINR(maxPrice, true)}
                   </div>
 
-                  {/* Native Hidden / Overlay Sliders */}
+                  {/* Range Sliders */}
                   <input
                     type="range"
                     min="0"
@@ -349,6 +384,7 @@ const HomePage = () => {
               <div className="brand-list">
                 {displayedBrands.map((brand) => {
                   const isChecked = selectedBrands.includes(brand.key);
+                  const count = brandCounts[brand.key] || 0;
                   return (
                     <div
                       key={brand.key}
@@ -360,6 +396,7 @@ const HomePage = () => {
                           <BrandIcon brand={brand.name} size={18} />
                         </span>
                         <span className="brand-item-name">{brand.name}</span>
+                        {count > 0 && <span className="brand-count-chip">({count})</span>}
                       </div>
 
                       {/* Purple Checkbox */}
@@ -421,6 +458,38 @@ const HomePage = () => {
 
           {/* Right Product Grid */}
           <main className="products-showcase-main">
+            {/* Catalog Toolbar Header */}
+            <div className="catalog-toolbar">
+              <div className="catalog-toolbar-left">
+                <span className="products-count-badge">
+                  {filteredProducts.length} items found
+                </span>
+                {filterParam === 'favourites' && (
+                  <span className="active-filter-pill">Favourites Only</span>
+                )}
+                {searchQuery && (
+                  <span className="active-filter-pill">Search: "{searchQuery}"</span>
+                )}
+              </div>
+
+              <div className="catalog-toolbar-right">
+                <label className="sort-label">
+                  <ArrowUpDown size={14} />
+                  <span>Sort by:</span>
+                </label>
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                  className="sort-select-box"
+                >
+                  <option value="featured">Featured First</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating">Highest Rated</option>
+                </select>
+              </div>
+            </div>
+
             {filteredProducts.length === 0 ? (
               <div className="no-products-box">
                 <h4>No products match your filters</h4>
