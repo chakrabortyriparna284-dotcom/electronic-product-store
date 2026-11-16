@@ -8,56 +8,57 @@ import { formatINR } from '../utils/currency';
 
 const CATEGORIES = [
   'All Categories',
+  'Smartphones',
+  'Laptops',
+  'Audio & Sound',
+  'Smart Watches',
+  'Gaming & Consoles',
+  'Cameras',
+  'Smart Home',
+  'Accessories',
   'Deals',
-  'Crypto',
-  'Fashion',
-  'Health & Wellness',
-  'Art',
-  'Home',
-  'Sport',
-  'Music',
-  'Gaming',
 ];
 
 const BRANDS = [
-  { name: 'Adidas', key: 'Adidas' },
-  { name: 'Columbia', key: 'Columbia' },
-  { name: 'Demix', key: 'Demix' },
-  { name: 'New Balance', key: 'New Balance' },
-  { name: 'Nike', key: 'Nike' },
+  { name: 'Apple', key: 'Apple' },
+  { name: 'Samsung', key: 'Samsung' },
+  { name: 'Sony', key: 'Sony' },
   { name: 'Xiaomi', key: 'Xiaomi' },
-  { name: 'Asics', key: 'Asics' },
+  { name: 'Dell', key: 'Dell' },
+  { name: 'HP', key: 'HP' },
 ];
 
 const EXTRA_BRANDS = [
-  { name: 'Apple', key: 'Apple' },
-  { name: 'Sony', key: 'Sony' },
+  { name: 'Asus', key: 'Asus' },
+  { name: 'Lenovo', key: 'Lenovo' },
+  { name: 'Bose', key: 'Bose' },
+  { name: 'Logitech', key: 'Logitech' },
 ];
 
 const HomePage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Active Category (default 'Sport' to match the design screenshot!)
-  const activeCategory = searchParams.get('category') || 'Sport';
+  // Active Category (default 'All Categories' for comprehensive electronic store experience)
+  const activeCategory = searchParams.get('category') || 'All Categories';
   const searchQuery = searchParams.get('search') || '';
   const filterParam = searchParams.get('filter') || '';
 
   // Filter States
   const [minPrice, setMinPrice] = useState(20);
-  const [maxPrice, setMaxPrice] = useState(1130);
+  const [maxPrice, setMaxPrice] = useState(2500);
   const [ratingFilter, setRatingFilter] = useState(4); // 4 Stars & up by default
   const [selectedBrands, setSelectedBrands] = useState([
-    'Adidas',
-    'Columbia',
-    'Demix',
-    'New Balance',
-    'Nike',
+    'Apple',
+    'Samsung',
+    'Sony',
     'Xiaomi',
-  ]); // Asics unchecked by default as in screenshot
+    'Dell',
+    'HP',
+  ]);
   const [deliveryOption, setDeliveryOption] = useState('Standard');
   const [showMoreBrands, setShowMoreBrands] = useState(false);
   const [sortBy, setSortBy] = useState('featured');
-  const [favorites, setFavorites] = useState(['prod-003', 'prod-005']);
+  const [favorites, setFavorites] = useState(['prod-001', 'prod-008']);
 
   // Products from backend or fallback to rich mock data
   const [backendProducts, setBackendProducts] = useState(null);
@@ -195,7 +196,7 @@ const HomePage = () => {
 
   const handleResetPrice = () => {
     setMinPrice(20);
-    setMaxPrice(1130);
+    setMaxPrice(2500);
   };
 
   const handleToggleFavorite = (prodId, isFav) => {
@@ -299,8 +300,8 @@ const HomePage = () => {
                   <div
                     className="slider-track-highlight"
                     style={{
-                      left: `${((minPrice - 0) / 1200) * 100}%`,
-                      right: `${100 - ((maxPrice - 0) / 1200) * 100}%`,
+                      left: `${((minPrice - 0) / 2500) * 100}%`,
+                      right: `${100 - ((maxPrice - 0) / 2500) * 100}%`,
                     }}
                   ></div>
 
@@ -308,7 +309,7 @@ const HomePage = () => {
                   <div
                     className="price-pill-badge min-pill"
                     style={{
-                      left: `${Math.min(Math.max(((minPrice - 0) / 1200) * 100, 2), 70)}%`,
+                      left: `${Math.min(Math.max(((minPrice - 0) / 2500) * 100, 2), 70)}%`,
                     }}
                   >
                     {formatINR(minPrice, true)}
@@ -318,7 +319,7 @@ const HomePage = () => {
                   <div
                     className="price-pill-badge max-pill"
                     style={{
-                      left: `${Math.min(Math.max(((maxPrice - 0) / 1200) * 100, 20), 84)}%`,
+                      left: `${Math.min(Math.max(((maxPrice - 0) / 2500) * 100, 20), 84)}%`,
                     }}
                   >
                     {formatINR(maxPrice, true)}
@@ -328,7 +329,7 @@ const HomePage = () => {
                   <input
                     type="range"
                     min="0"
-                    max="1200"
+                    max="2500"
                     step="10"
                     value={minPrice}
                     onChange={(e) => {
@@ -340,7 +341,7 @@ const HomePage = () => {
                   <input
                     type="range"
                     min="0"
-                    max="1200"
+                    max="2500"
                     step="10"
                     value={maxPrice}
                     onChange={(e) => {
@@ -499,7 +500,7 @@ const HomePage = () => {
                     handleResetPrice();
                     handleResetBrands();
                     setRatingFilter(0);
-                    handleCategorySelect('Sport');
+                    handleCategorySelect('All Categories');
                   }}
                   className="reset-all-filters-btn"
                 >

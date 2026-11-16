@@ -74,29 +74,29 @@ const ProductCard = ({ product, onToggleFavorite, isFavorite = false }) => {
         {/* Floating Review Badges (Design Showcase) */}
         <div className="hero-review-badge top-left">
           <img
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80"
+            src={product.reviewsBadge?.[0]?.avatar || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80'}
             alt="User"
             className="review-avatar"
           />
-          <span>4.7/5 ★</span>
+          <span>{product.reviewsBadge?.[0]?.rating || '4.9/5'} ★</span>
         </div>
 
         <div className="hero-review-badge middle-right">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80"
+            src={product.reviewsBadge?.[1]?.avatar || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=80&q=80'}
             alt="User"
             className="review-avatar"
           />
-          <span>4.6/5 ★</span>
+          <span>{product.reviewsBadge?.[1]?.rating || '4.8/5'} ★</span>
         </div>
 
         <div className="hero-review-badge bottom-left">
           <img
-            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&q=80"
+            src={product.reviewsBadge?.[2]?.avatar || 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=80&q=80'}
             alt="User"
             className="review-avatar"
           />
-          <span>5/5 ★</span>
+          <span>{product.reviewsBadge?.[2]?.rating || '5/5'} ★</span>
         </div>
 
         {/* Hero Image */}

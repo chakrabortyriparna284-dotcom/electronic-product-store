@@ -56,19 +56,40 @@ const CheckoutPage = () => {
         }),
       });
 
+      const orderPayload = {
+        orderItems: cartItems,
+        shippingAddress,
+        paymentMethod,
+        totalPrice,
+      };
+
       if (res.ok) {
         const data = await res.json();
+        localStorage.setItem('latestOrderId', data._id);
+        localStorage.setItem('latestOrder', JSON.stringify(data));
         clearCart();
         navigate(`/order/${data._id}`);
       } else {
         // Simulated offline success if backend isn't running
         const simulatedId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+        const savedOrder = { ...orderPayload, _id: simulatedId };
+        localStorage.setItem('latestOrderId', simulatedId);
+        localStorage.setItem('latestOrder', JSON.stringify(savedOrder));
         clearCart();
         navigate(`/order/${simulatedId}`);
       }
     } catch (err) {
       // Graceful offline fallback
       const simulatedId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+      const savedOrder = {
+        orderItems: cartItems,
+        shippingAddress,
+        paymentMethod,
+        totalPrice,
+        _id: simulatedId,
+      };
+      localStorage.setItem('latestOrderId', simulatedId);
+      localStorage.setItem('latestOrder', JSON.stringify(savedOrder));
       clearCart();
       navigate(`/order/${simulatedId}`);
     } finally {
